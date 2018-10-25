@@ -101,7 +101,7 @@ const Intro = styled(Content)`
 const Title = styled('h1')`
   font-family:'GothamBold';
   src: url('../../public/static/GOTHAM-BOLD.TTF') format("truetype");
-  letter-spacing: -4px;
+  // letter-spacing: -4px;
   ${('font-size: 100px; color: #8D7AE7')};
   .nameTitle {
     ${tw `text-black`};
@@ -125,11 +125,53 @@ const Title = styled('h1')`
   }
 `;
 
+const Social = styled('section')`
+  ${tw `flex flex-wrap items-center justify-center sm:justify-start mt-8'`};
+`;
+
+const Button = styled('href')`
+  ${tw `cursor-pointer text-sm md:text-base mx-2 sm:mx-0 py-2 px-2 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline`};
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-10px);
+  }
+`;
+
+const Email = styled(Button)`
+  ${tw `text-white`};
+  background: #8D7AE7;
+  .github-logo{
+    height:30px;
+  }
+`;
+
+const GitHub = styled(Button)`
+  ${tw `text-white sm:mx-4 my-4 sm:my-0`};
+  background: #685AAB;
+`;
+
+const LinkedIn = styled(Button)`
+  ${tw `text-white`};
+  background: #4B417C;
+`;
+
+
 
 export default () => (
 	<Page>
 		<Intro>
-			<Title>Hey, I'm Bhavesh</Title>
+      <Title>
+        Hey,<br />
+        <span className="nameTitle">I'm Bhavesh <span className="emoji">👋🏼</span></span>
+      </Title>
+      <Social>
+        <Email role="button" href="https://www.lekoarts.de">
+        </Email>
+        <GitHub role="button" href="https://github.com/LeKoArts">
+        </GitHub>
+        <LinkedIn role="button" href="https://twitter.com/lekoarts_de">
+        </LinkedIn>
+      </Social>
 		</Intro>
 	</Page>
 )
