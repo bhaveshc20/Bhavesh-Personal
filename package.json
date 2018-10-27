@@ -16,6 +16,8 @@
 		"react": "^16.4.2",
 		"react-dom": "^16.4.2",
 		"react-emotion": "^9.2.6",
+		"react-fontawesome": "^1.6.1",
+		"react-id-swiper": "^1.6.8",
 		"tailwindcss": "^0.6.5"
 	}
 }

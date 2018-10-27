@@ -7,6 +7,7 @@
 /* global tw */
 import React from 'react'
 import styled, {injectGlobal} from 'react-emotion'
+import github from '../../public/static/icons/github-logo.svg';
 
 injectGlobal`
   *::before,
@@ -15,10 +16,11 @@ injectGlobal`
   }
   ::selection {
     color: white;
-    background-color: #F3EEE8;
+    background-color: #434343;
   }
   html {
-    background: #F3EEE8;
+    font-family: Gilroy;
+    background: #FFF;
     border: 0;
     margin: 0;
     font-size: 18px;
@@ -27,6 +29,10 @@ injectGlobal`
     border: 0;
     margin: 0;
     padding: 0;
+  }
+  @font-face{
+  font-family: Gilroy;
+  src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
   }
   .swiper-container {
     padding-bottom: 4rem;
@@ -81,9 +87,9 @@ injectGlobal`
 `;
 
 const Page = styled('div')`
-	${tw `text-white font-sans p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
-	border: 14px solid #8D7AE7;
-  background: #F3EEE8 url("data:image/svg+xml,<svg width='52' height='26' viewBox='0 0 52 26' opacity='0.1' xmlns='http://www.w3.org/2000/svg'><g fill='none' fill-rule='evenodd'><g fill='%2316191f' fill-opacity='0.8'><path d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /></g></g></svg>");
+	${tw `text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
+  background: #FFF;
+  
   min-height: calc(100vh - 16px);
   @media (min-width: 576px) {
     min-height: calc(100vh - 32px);
@@ -99,17 +105,18 @@ const Intro = styled(Content)`
 `;
 
 const Title = styled('h1')`
-  font-family:'GothamBold';
-  src: url('../../public/static/GOTHAM-BOLD.TTF') format("truetype");
+font-family: Gilroy;
+  src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
+  line-height: 1.2;
   // letter-spacing: -4px;
   ${('font-size: 100px; color: #8D7AE7')};
   .nameTitle {
-    ${tw `text-black`};
+    color: #2C274D;
   };
   .emoji {
     display: inline-block;
     animation: rotate 2s ease-in-out infinite;
-    font-size: 80px;
+    font-size: 80%;
   };
 
   @keyframes rotate {
@@ -130,7 +137,7 @@ const Social = styled('section')`
 `;
 
 const Button = styled('href')`
-  ${tw `cursor-pointer text-sm md:text-base mx-2 sm:mx-0 py-2 px-2 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline`};
+  ${tw `cursor-pointer mx-2 my-1 py-1 px-2 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline`};
   transition: all 0.3s ease-in-out;
   &:hover {
     transform: translateY(-10px);
@@ -138,21 +145,22 @@ const Button = styled('href')`
 `;
 
 const Email = styled(Button)`
-  ${tw `text-white`};
+  ${tw `text-white mx-4 my-4 sm:my-0`};
   background: #8D7AE7;
-  .github-logo{
-    height:30px;
-  }
 `;
 
 const GitHub = styled(Button)`
-  ${tw `text-white sm:mx-4 my-4 sm:my-0`};
+  ${tw `text-white sm:mx-4 my-4 sm:my-0 items-center justify-center`};
   background: #685AAB;
 `;
 
 const LinkedIn = styled(Button)`
   ${tw `text-white`};
   background: #4B417C;
+`;
+
+const SliderWrapper = styled('section')`
+  ${tw `sm:px-8 px-4 md:px-24`};
 `;
 
 
@@ -162,16 +170,46 @@ export default () => (
 		<Intro>
       <Title>
         Hey,<br />
-        <span className="nameTitle">I'm Bhavesh <span className="emoji">👋🏼</span></span>
+        <span className="nameTitle">I'm Bhavesh <span className="emoji" role="img" aria-label="emoji-icon">👋</span></span>
       </Title>
       <Social>
         <Email role="button" href="https://www.lekoarts.de">
+           E-Mail
         </Email>
         <GitHub role="button" href="https://github.com/LeKoArts">
+          {/* <img src={github} style={{ height: '17px',marginRight:'10px' }} />GitHub */}
+          GitHub
         </GitHub>
         <LinkedIn role="button" href="https://twitter.com/lekoarts_de">
+          LinkedIn
         </LinkedIn>
       </Social>
 		</Intro>
+    <SliderWrapper>
+      <Title>Portfolio 💼</Title>
+      {/* <Swiper {...params}>
+        {edges.map(site => {
+          const { id, title, description, preview, features, cover, url } = site.node;
+          return (
+            <Item key={id}>
+              <BGImage>
+                <Gradient />
+                <Img fluid={cover.childImageSharp.fluid.src} />
+              </BGImage>
+              <ItemContent>
+                <Top>
+                  <Repo href={url}>
+                    <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
+                        </Repo>
+                </Top>
+                <Bottom>
+                  <ItemTitle>{title}</ItemTitle>
+                </Bottom>
+              </ItemContent>
+            </Item>
+          );
+        })}
+      </Swiper> */}
+    </SliderWrapper>
 	</Page>
 )
