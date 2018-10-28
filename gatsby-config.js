@@ -13,14 +13,6 @@ module.exports = {
 			},
 		},
 		{
-			resolve: 'gatsby-plugin-react-svg',
-			options: {
-				rule: {
-					include: './src/sites'
-				}
-			}
-		},
-		{
 			resolve: 'gatsby-plugin-google-analytics',
 		},
 		'gatsby-plugin-netlify',

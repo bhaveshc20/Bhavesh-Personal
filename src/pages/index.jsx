@@ -286,13 +286,13 @@ class Index extends Component {
             </Title>
             <Social>
               <Email role="button" href="mailto:bhaveshch20@gmail.com">
-                <img src={email} style={{ height: '20px', marginRight: '10px' }} />E-Mail
+                <img src={email} alt="email" style={{ height: '20px', marginRight: '10px' }} />E-Mail
               </Email>
               <GitHub role="button" href="https://github.com/bhaveshc789">
-                <img src={github} style={{ height: '20px', marginRight: '10px' }} />GitHub
+                <img src={github} alt="github" style={{ height: '20px', marginRight: '10px' }} />GitHub
         </GitHub>
               <LinkedIn role="button" href="https://linkedin.com/in/bhavesh-chowdhury">
-                <img src={linkedin} style={{ height: '20px', marginRight: '10px' }} />LinkedIn
+                <img src={linkedin} alt="linkedin" style={{ height: '20px', marginRight: '10px' }} />LinkedIn
         </LinkedIn>
             </Social>
           </Intro>
