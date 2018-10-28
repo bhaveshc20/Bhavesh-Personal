@@ -15,9 +15,9 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import '../swiper.css';
 
-import github from '../../public/static/github-logo.png';
-import email from '../../public/static/envelope.png';
-import linkedin from '../../public/static/linkedin-logo.png';
+import github from '../github-logo.png';
+import email from '../envelope.png';
+import linkedin from '../linkedin-logo.png';
 
 injectGlobal`
   *::before,
