@@ -88,11 +88,11 @@
   position: absolute;
   top: 50%;
   width: 27px;
-  height: 44px;
+  height: 40px;
   margin-top: -22px;
   z-index: 10;
   cursor: pointer;
-  background-size: 27px 44px;
+  background-size: 38px 27px;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -104,14 +104,16 @@
 }
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
-  /* background-image: url("../public/static/arrows-left.svg"); */
+  background-image: url("../public/static/arrows-left.png");
   left: 10px;
+  width: auto;
   right: auto;
 }
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
-  /* background-image: url("../public/static/arrows-right.svg"); */
+  background-image: url("../public/static/arrows-right.png");
   right: 10px;
+  width: auto;
   left: auto;
 }
 .swiper-button-lock {
