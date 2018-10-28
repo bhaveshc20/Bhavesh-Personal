@@ -104,7 +104,7 @@
 }
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
-  background-image: url("../public/static/arrows-left.svg");
+  /* background-image: url("../public/static/arrows-left.svg"); */
   left: 10px;
   right: auto;
 }
