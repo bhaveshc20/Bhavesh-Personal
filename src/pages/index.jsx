@@ -14,9 +14,11 @@ import Img from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import '../swiper.css';
-import github from '../../public/static/icons/github-logo.svg';
-import email from '../../public/static/icons/envelope.svg';
-import linkedin from '../../public/static/icons/linkedin-logo.svg';
+
+// import Icon from 'svg-react-loader?name=Icon!../../public/static/icons/github-logo.svg';
+// import github from '../../public/static/icons/github-logo.svg';
+// import email from '../../public/static/icons/envelope.svg';
+// import linkedin from '../../public/static/icons/linkedin-logo.svg';
 
 injectGlobal`
   *::before,
@@ -285,13 +287,13 @@ class Index extends Component {
             </Title>
             <Social>
               <Email role="button" href="mailto:bhaveshch20@gmail.com">
-                <img src={email} style={{ height: '20px', marginRight: '10px' }} />E-Mail
+                {/* <img src={email} style={{ height: '20px', marginRight: '10px' }} />E-Mail */}
               </Email>
               <GitHub role="button" href="https://github.com/bhaveshc789">
-                <img src={github} style={{ height: '20px',marginRight:'10px'}} />GitHub
+              {/* <Icon/>GitHub */}
         </GitHub>
               <LinkedIn role="button" href="https://linkedin.com/in/bhavesh-chowdhury">
-                <img src={linkedin} style={{ height: '20px', marginRight: '10px' }} />LinkedIn
+                {/* <img src={linkedin} style={{ height: '20px', marginRight: '10px' }} />LinkedIn */}
         </LinkedIn>
             </Social>
           </Intro>
@@ -309,7 +311,7 @@ class Index extends Component {
                     <ItemContent>
                       <Top>
                         <Repo href={url}>
-                          <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
+                          {/* <img src={github} alt="Arrow" aria-hidden="true" /> GitHub */}
                   </Repo>
                       </Top>
                       <Bottom>
