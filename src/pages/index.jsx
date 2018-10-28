@@ -223,7 +223,7 @@ const BGImage = styled('div')`
   }
   img {
     ${tw `rounded-lg`};
-    opacity: 0.5 !important;
+    opacity: 1 !important;
   }
 `;
 
@@ -289,8 +289,8 @@ class Index extends Component {
           return (
             <Item key={id}>
               <BGImage>
-                <Gradient />
-                <Img fluid={cover.childImageSharp.fluid.src} />
+                {/* <Gradient /> */}
+                <Img fluid={cover.childImageSharp.fluid} />
               </BGImage>
               <ItemContent>
                 <Top>
