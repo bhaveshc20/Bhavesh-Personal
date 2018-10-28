@@ -15,9 +15,9 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import '../swiper.css';
 
-import github from '../github-logo.png';
-import email from '../envelope.png';
-import linkedin from '../linkedin-logo.png';
+import github from '../github-logo.svg';
+import email from '../envelope.svg';
+import linkedin from '../linkedin-logo.svg';
 
 injectGlobal`
   *::before,
@@ -41,8 +41,12 @@ injectGlobal`
     padding: 0;
   }
   @font-face {
-    font-family: Gilroy;
-    src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
+    font-family: Gilroy-Bold;
+    src: url('./Gilroy-ExtraBold.otf') format("opentype");
+  }
+  @font-face {
+    font-family: Gilroy-light;
+    src: url('./Gilroy-Light.otf') format("opentype");
   }
   .swiper-container {
     padding-bottom: 4rem;
@@ -116,8 +120,7 @@ const Intro = styled(Content)`
 `;
 
 const Title = styled('h1')`
-  font-family: Gilroy;
-  src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
+  font-family: Gilroy-Bold;
   line-height: 1.2;
   // letter-spacing: -3px;
   ${('font-size: 8vw; color: #8D7AE7')};
