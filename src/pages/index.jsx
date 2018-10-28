@@ -121,6 +121,7 @@ const Intro = styled(Content)`
 
 const Title = styled('h1')`
   font-family: Gilroy-Bold;
+  src: url('./Gilroy-ExtraBold.otf') format("opentype");
   line-height: 1.2;
   // letter-spacing: -3px;
   ${('font-size: 8vw; color: #8D7AE7')};
