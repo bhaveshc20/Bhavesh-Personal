@@ -9,11 +9,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion'
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import '../swiper.css';
 import github from '../../public/static/icons/github-logo.svg';
+import email from '../../public/static/icons/envelope.svg';
+import linkedin from '../../public/static/icons/linkedin-logo.svg';
 
 injectGlobal`
   *::before,
@@ -93,9 +96,10 @@ injectGlobal`
 `;
 
 const Page = styled('div')`
-	${tw`text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
+	${tw `text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
   background: #FFF;
-  
+  color: #2C274D;
+  border: 14px solid #8D7AE7;
   min-height: calc(100vh - 16px);
   @media (min-width: 576px) {
     min-height: calc(100vh - 32px);
@@ -124,6 +128,10 @@ const Title = styled('h1')`
     animation: rotate 2s ease-in-out infinite;
     font-size: 80%;
   };
+  .emoji2 {
+    display: inline-block;
+    font-size: 80%;
+  };
 
   @keyframes rotate {
 	0% { transform: rotate(0deg); }
@@ -142,27 +150,37 @@ const Social = styled('section')`
   ${tw `flex flex-wrap items-center justify-center sm:justify-start mt-8'`};
 `;
 
-const Button = styled('href')`
-  ${tw `cursor-pointer mx-2 my-1 py-1 px-2 md:px-8 rounded-full no-underline shadow-md focus:outline-none focus:shadow-outline`};
+const Button = styled(OutboundLink)`
+  ${tw `cursor-pointer mx-2 my-1 py-1 px-2 md:px-8 rounded-lg no-underline focus:outline-none focus:shadow-outline`};
   transition: all 0.3s ease-in-out;
   &:hover {
+    ${tw `shadow-md`};
     transform: translateY(-10px);
   }
 `;
 
 const Email = styled(Button)`
-  ${tw `text-white mx-4 my-4 sm:my-0`};
-  background: #8D7AE7;
+  ${tw `mx-4 my-4 sm:my-0`};
+  color: #2C274D;
+  display: flex;
+  align-items:center;
+  justify-content:center;
 `;
 
 const GitHub = styled(Button)`
-  ${tw `text-white sm:mx-4 my-4 sm:my-0 items-center justify-center`};
-  background: #685AAB;
+  ${tw `sm:mx-4 my-4 sm:my-0`};
+  color: #2C274D;
+  display: flex;
+  align-items:center;
+  justify-content:center;
 `;
 
 const LinkedIn = styled(Button)`
-  ${tw `text-white`};
-  background: #4B417C;
+  ${tw `sm:mx-4 my-4 sm:my-0`};
+  color: #2C274D;
+  display: flex;
+  align-items:center;
+  justify-content:center;
 `;
 
 const SliderWrapper = styled('section')`
@@ -170,16 +188,17 @@ const SliderWrapper = styled('section')`
 `;
 
 const Item = styled('div')`
-  ${tw `w-64 bg-black rounded-lg shadow-lg flex`};
+  ${tw `w-64 bg-black rounded-lg flex`};
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
+    ${tw `shadow-md`};
     transform: translateY(-15px);
   }
   height: 300px;
 `;
 
 const ItemContent = styled('div')`
-  ${tw `py-8 px-6 flex flex-wrap content-between relative`};
+  ${tw `py-8 px-6 inline-block flex-wrap content-between relative`};
   z-index: 10;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 0;
@@ -189,15 +208,15 @@ const ItemContent = styled('div')`
 `;
 
 const Top = styled('div')`
-  ${tw `z-30`};
+  ${tw `z-30 flex flex-col`};
 `;
 
 const Bottom = styled('div')`
   ${tw `z-30`};
 `;
 
-const Repo = styled('href')`
-  ${tw `text-white text-sm inline-block mb-4 py-1 tracking-wide no-underline opacity-75`};
+const Repo = styled(OutboundLink)`
+  ${tw `text-black text-sm mb-4 py-1 no-underline opacity-75`};
   transition: all 0.4s ease-in-out;
   img {
     width: 16px;
@@ -228,12 +247,8 @@ const BGImage = styled('div')`
 `;
 
 const ItemTitle = styled('h2')`
-  ${tw `text-white text-3xl mb-4`};
-`;
-
-const Gradient = styled('div')`
-  ${tw `absolute pin rounded-lg z-20`};
-  background: linear-gradient(to top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
+  ${tw `text-3xl mb-4`};
+  margin-top: 150px;
 `;
 
 
@@ -262,52 +277,51 @@ class Index extends Component {
 
     return (
       <React.Fragment>
-      <Page>
-        <Intro>
-          <Title>
-            Hey,<br />
-            <span className="nameTitle">I'm Bhavesh <span className="emoji" role="img" aria-label="emoji-icon">👋</span></span>
-          </Title>
-          <Social>
-            <Email role="button" href="https://www.lekoarts.de">
-              E-Mail
-        </Email>
-            <GitHub role="button" href="https://github.com/LeKoArts">
-              {/* <img src={github} style={{ height: '17px',marginRight:'10px' }} />GitHub */}
-              GitHub
+        <Page>
+          <Intro>
+            <Title>
+              Hey,<br />
+              <span className="nameTitle">I'm Bhavesh <span className="emoji" role="img" aria-label="hand-emoji">👋</span></span>
+            </Title>
+            <Social>
+              <Email role="button" href="mailto:bhaveshch20@gmail.com">
+                <img src={email} style={{ height: '20px', marginRight: '10px' }} />E-Mail
+              </Email>
+              <GitHub role="button" href="https://github.com/bhaveshc789">
+                <img src={github} style={{ height: '20px',marginRight:'10px'}} />GitHub
         </GitHub>
-            <LinkedIn role="button" href="https://twitter.com/lekoarts_de">
-              LinkedIn
+              <LinkedIn role="button" href="https://linkedin.com/in/bhavesh-chowdhury">
+                <img src={linkedin} style={{ height: '20px', marginRight: '10px' }} />LinkedIn
         </LinkedIn>
-          </Social>
-        </Intro>
-        <SliderWrapper>
-          <Title>Portfolio</Title>
-          <Swiper {...params}>
-        {edges.map(site => {
-          const { id, title, cover, url } = site.node;
-          return (
-            <Item key={id}>
-              <BGImage>
-                {/* <Gradient /> */}
-                <Img fluid={cover.childImageSharp.fluid} />
-              </BGImage>
-              <ItemContent>
-                <Top>
-                  <Repo href={url}>
-                    <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
-                        </Repo>
-                </Top>
-                <Bottom>
-                  <ItemTitle>{title}</ItemTitle>
-                </Bottom>
-              </ItemContent>
-            </Item>
-          );
-        })}
-      </Swiper>
-        </SliderWrapper>
-      </Page>
+            </Social>
+          </Intro>
+          <SliderWrapper>
+            <Title>Portfolio <span className="emoji2" role="img" aria-label="case-emoji">💼</span></Title>
+            <Swiper {...params}>
+              {edges.map(site => {
+                const { id, title, cover, url } = site.node;
+                return (
+                  <Item key={id}>
+                    <BGImage>
+                      {/* <Gradient /> */}
+                      <Img fluid={cover.childImageSharp.fluid} />
+                    </BGImage>
+                    <ItemContent>
+                      <Top>
+                        <Repo href={url}>
+                          <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
+                  </Repo>
+                      </Top>
+                      <Bottom>
+                        <ItemTitle>{title}</ItemTitle>
+                      </Bottom>
+                    </ItemContent>
+                  </Item>
+                );
+              })}
+            </Swiper>
+          </SliderWrapper>
+        </Page>
       </React.Fragment>
     );
   }

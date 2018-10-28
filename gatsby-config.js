@@ -12,5 +12,8 @@ module.exports = {
 				path: `./src/sites/`,
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-google-analytics',
+		},
 	]
 }
