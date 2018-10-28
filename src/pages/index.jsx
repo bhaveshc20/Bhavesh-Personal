@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion'
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
