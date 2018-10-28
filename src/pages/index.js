@@ -5,8 +5,14 @@
  */
 
 /* global tw */
-import React from 'react'
-import styled, {injectGlobal} from 'react-emotion'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Swiper from 'react-id-swiper';
+import styled, { injectGlobal } from 'react-emotion'
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+
+import '../swiper.css';
 import github from '../../public/static/icons/github-logo.svg';
 
 injectGlobal`
@@ -30,9 +36,9 @@ injectGlobal`
     margin: 0;
     padding: 0;
   }
-  @font-face{
-  font-family: Gilroy;
-  src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
+  @font-face {
+    font-family: Gilroy;
+    src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
   }
   .swiper-container {
     padding-bottom: 4rem;
@@ -87,7 +93,7 @@ injectGlobal`
 `;
 
 const Page = styled('div')`
-	${tw `text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
+	${tw`text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
   background: #FFF;
   
   min-height: calc(100vh - 16px);
@@ -97,7 +103,7 @@ const Page = styled('div')`
 `;
 
 const Content = styled('section')`
-  ${tw `sm:px-8 px-4 md:px-24` };
+  ${tw `sm:px-8 px-4 md:px-24`};
 `;
 
 const Intro = styled(Content)`
@@ -105,11 +111,11 @@ const Intro = styled(Content)`
 `;
 
 const Title = styled('h1')`
-font-family: Gilroy;
+  font-family: Gilroy;
   src: url('../../public/Gilroy-ExtraBold.otf') format("opentype");
   line-height: 1.2;
-  // letter-spacing: -4px;
-  ${('font-size: 100px; color: #8D7AE7')};
+  // letter-spacing: -3px;
+  ${('font-size: 8vw; color: #8D7AE7')};
   .nameTitle {
     color: #2C274D;
   };
@@ -163,33 +169,123 @@ const SliderWrapper = styled('section')`
   ${tw `sm:px-8 px-4 md:px-24`};
 `;
 
+const Item = styled('div')`
+  ${tw `w-64 bg-black rounded-lg shadow-lg flex`};
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover {
+    transform: translateY(-15px);
+  }
+  height: 300px;
+`;
+
+const ItemContent = styled('div')`
+  ${tw `py-8 px-6 flex flex-wrap content-between relative`};
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const Top = styled('div')`
+  ${tw `z-30`};
+`;
+
+const Bottom = styled('div')`
+  ${tw `z-30`};
+`;
+
+const Repo = styled('href')`
+  ${tw `text-white text-sm inline-block mb-4 py-1 tracking-wide no-underline opacity-75`};
+  transition: all 0.4s ease-in-out;
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+    transition: transform 0.3s ease-in-out;
+  }
+  &:hover {
+    ${tw `opacity-100`};
+  }
+`;
+
+const BGImage = styled('div')`
+  ${tw `absolute pin rounded-lg`};
+  z-index:0;
+  .gatsby-image-outer-wrapper {
+    position: static !important;
+  }
+  .gatsby-image-wrapper {
+    position: static !important;
+  }
+  img {
+    ${tw `rounded-lg`};
+    opacity: 0.5 !important;
+  }
+`;
+
+const ItemTitle = styled('h2')`
+  ${tw `text-white text-3xl mb-4`};
+`;
+
+const Gradient = styled('div')`
+  ${tw `absolute pin rounded-lg z-20`};
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
+`;
 
 
-export default () => (
-	<Page>
-		<Intro>
-      <Title>
-        Hey,<br />
-        <span className="nameTitle">I'm Bhavesh <span className="emoji" role="img" aria-label="emoji-icon">👋</span></span>
-      </Title>
-      <Social>
-        <Email role="button" href="https://www.lekoarts.de">
-           E-Mail
+
+class Index extends Component {
+  render() {
+    const {
+      data: {
+        allSitesYaml: { edges },
+      },
+    } = this.props;
+
+    const params = {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 'auto',
+      spaceBetween: 40,
+      breakpoints: {
+        460: {
+          slidesPerView: 1,
+        },
+      },
+    };
+
+    return (
+      <React.Fragment>
+      <Page>
+        <Intro>
+          <Title>
+            Hey,<br />
+            <span className="nameTitle">I'm Bhavesh <span className="emoji" role="img" aria-label="emoji-icon">👋</span></span>
+          </Title>
+          <Social>
+            <Email role="button" href="https://www.lekoarts.de">
+              E-Mail
         </Email>
-        <GitHub role="button" href="https://github.com/LeKoArts">
-          {/* <img src={github} style={{ height: '17px',marginRight:'10px' }} />GitHub */}
-          GitHub
+            <GitHub role="button" href="https://github.com/LeKoArts">
+              {/* <img src={github} style={{ height: '17px',marginRight:'10px' }} />GitHub */}
+              GitHub
         </GitHub>
-        <LinkedIn role="button" href="https://twitter.com/lekoarts_de">
-          LinkedIn
+            <LinkedIn role="button" href="https://twitter.com/lekoarts_de">
+              LinkedIn
         </LinkedIn>
-      </Social>
-		</Intro>
-    <SliderWrapper>
-      <Title>Portfolio 💼</Title>
-      {/* <Swiper {...params}>
+          </Social>
+        </Intro>
+        <SliderWrapper>
+          <Title>Portfolio</Title>
+          <Swiper {...params}>
         {edges.map(site => {
-          const { id, title, description, preview, features, cover, url } = site.node;
+          const { id, title, cover, url } = site.node;
           return (
             <Item key={id}>
               <BGImage>
@@ -209,7 +305,42 @@ export default () => (
             </Item>
           );
         })}
-      </Swiper> */}
-    </SliderWrapper>
-	</Page>
-)
+      </Swiper>
+        </SliderWrapper>
+      </Page>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Index;
+
+Index.propTypes = {
+  data: PropTypes.shape({
+    allSitesYaml: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }),
+  }).isRequired,
+};
+
+export const overviewQuery = graphql`
+  query OverviewQuery {
+    allSitesYaml {
+      edges {
+        node {
+          id
+          title
+          url
+          name
+          cover {
+            childImageSharp {
+              fluid(maxWidth: 350) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
