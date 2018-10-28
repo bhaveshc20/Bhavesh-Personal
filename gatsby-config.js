@@ -15,5 +15,6 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-google-analytics',
 		},
+		'gatsby-plugin-netlify',
 	]
 }
