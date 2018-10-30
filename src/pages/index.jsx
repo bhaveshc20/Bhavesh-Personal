@@ -111,6 +111,32 @@ const Page = styled('div')`
   }
 `;
 
+// const Header = styled('div')`
+//   background: #FF;
+// `;
+
+// const Navbar = styled('div')`
+//   display: flex;
+//   justify-content: flex-end;
+//   padding: 1.5rem 2rem;
+//   align-items: center;
+// `
+// const Links = styled.div`
+//   display: flex;
+//   align-items: center;
+//   a {
+//     color: #2C274D;
+//     text-decoration: none;
+//     font-weight: 400;
+//     margin: 0 1rem;
+//     outline: none;
+//   }
+//   a:hover{
+//     transition: transform 0.2s ease-in-out;
+//     font-weight: 700;
+//   }
+// `
+
 const Content = styled('section')`
   ${tw `sm:px-8 px-4 md:px-24`};
 `;
@@ -283,6 +309,16 @@ class Index extends Component {
     return (
       <React.Fragment>
         <Page>
+          {/* <Header>
+            <Navbar>
+              <Links>
+                <a href='.emoji2'>Home</a>
+                <Link to="/about">
+                  About
+                </Link>
+              </Links>
+            </Navbar>
+          </Header> */}
           <Intro>
             <Title>
               Hey,<br />
