@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion'
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
@@ -20,6 +20,14 @@ import email from '../envelope.svg';
 import linkedin from '../linkedin-logo.svg';
 
 injectGlobal`
+  @font-face {
+    font-family: Gilroy;
+    src: url('./Gilroy-ExtraBold.otf') format("opentype");
+  }
+  @font-face {
+    font-family: Gilroy-Light;
+    src: url('./Gilroy-Light.otf') format("opentype");
+  }
   *::before,
   *::after {
     box-sizing: border-box;
@@ -29,7 +37,7 @@ injectGlobal`
     background-color: #434343;
   }
   html {
-    font-family: Gilroy;
+    font-family: Gilroy-Light;
     background: #FFF;
     border: 0;
     margin: 0;
@@ -40,14 +48,8 @@ injectGlobal`
     margin: 0;
     padding: 0;
   }
-  @font-face {
-    font-family: Gilroy-Bold;
-    src: url('./Gilroy-ExtraBold.otf') format("opentype");
-  }
-  @font-face {
-    font-family: Gilroy-light;
-    src: url('./Gilroy-Light.otf') format("opentype");
-  }
+  
+  
   .swiper-container {
     padding-bottom: 4rem;
     padding-top: 4rem;
@@ -111,31 +113,31 @@ const Page = styled('div')`
   }
 `;
 
-// const Header = styled('div')`
-//   background: #FF;
-// `;
+const Header = styled('div')`
+  background: #FF;
+`;
 
-// const Navbar = styled('div')`
-//   display: flex;
-//   justify-content: flex-end;
-//   padding: 1.5rem 2rem;
-//   align-items: center;
-// `
-// const Links = styled.div`
-//   display: flex;
-//   align-items: center;
-//   a {
-//     color: #2C274D;
-//     text-decoration: none;
-//     font-weight: 400;
-//     margin: 0 1rem;
-//     outline: none;
-//   }
-//   a:hover{
-//     transition: transform 0.2s ease-in-out;
-//     font-weight: 700;
-//   }
-// `
+const Navbar = styled('div')`
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  align-items: center;
+`
+const Links = styled.div`
+  display: flex;
+  align-items: center;
+  a {
+    color: #2C274D;
+    text-decoration: none;
+    font-weight: 400;
+    margin: 0 1rem;
+    outline: none;
+  }
+  a:hover{
+    transition: transform 0.2s ease-in-out;
+    font-weight: 700;
+  }
+`
 
 const Content = styled('section')`
   ${tw `sm:px-8 px-4 md:px-24`};
@@ -146,8 +148,7 @@ const Intro = styled(Content)`
 `;
 
 const Title = styled('h1')`
-  font-family: Gilroy-Bold;
-  src: url('./Gilroy-ExtraBold.otf') format("opentype");
+  font-family: Gilroy;
   line-height: 1.2;
   // letter-spacing: -3px;
   ${('font-size: 8vw; color: #8D7AE7')};
@@ -196,6 +197,7 @@ const Email = styled(Button)`
   display: flex;
   align-items:center;
   justify-content:center;
+  font-weight: 300;
 `;
 
 const GitHub = styled(Button)`
@@ -309,16 +311,21 @@ class Index extends Component {
     return (
       <React.Fragment>
         <Page>
-          {/* <Header>
+          <Header>
             <Navbar>
               <Links>
-                <a href='.emoji2'>Home</a>
-                <Link to="/about">
+                <Link to="/">
+                  Home
+                </Link>
+                <Link to="/">
                   About
+                </Link>
+                <Link to="/">
+                  Portfolio
                 </Link>
               </Links>
             </Navbar>
-          </Header> */}
+          </Header>
           <Intro>
             <Title>
               Hey,<br />
