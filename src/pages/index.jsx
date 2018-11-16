@@ -22,11 +22,11 @@ import linkedin from '../linkedin-logo.svg';
 injectGlobal`
   @font-face {
     font-family: Gilroy;
-    src: url('./Gilroy-ExtraBold.otf') format("opentype");
+    src: url('../Gilroy-ExtraBold.otf') format("opentype");
   }
   @font-face {
     font-family: Gilroy-Light;
-    src: url('./Gilroy-Light.otf') format("opentype");
+    src: url('../Gilroy-Light.otf') format("opentype");
   }
   *::before,
   *::after {
