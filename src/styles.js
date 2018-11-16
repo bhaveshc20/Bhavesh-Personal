@@ -5,11 +5,11 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 injectGlobal`
   @font-face {
     font-family: Gilroy;
-    src: url('./Gilroy-ExtraBold.otf') format("opentype");
+    src: url('./fonts/Gilroy-ExtraBold.otf') format("opentype");
   }
   @font-face {
     font-family: Gilroy-Light;
-    src: url('./Gilroy-Light.otf') format("opentype");
+    src: url('./fonts/Gilroy-Light.otf') format("opentype");
   }
   *::before,
   *::after {
