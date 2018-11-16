@@ -151,7 +151,7 @@ const Title = styled('h1')`
   font-family: Gilroy;
   line-height: 1.2;
   // letter-spacing: -3px;
-  ${('font-size: 8vw; color: #8D7AE7')};
+  ${('font-size: 5vw; color: #8D7AE7')};
   .nameTitle {
     color: #2C274D;
   };
@@ -179,11 +179,11 @@ const Title = styled('h1')`
 `;
 
 const Social = styled('section')`
-  ${tw `flex flex-wrap items-center justify-center sm:justify-start mt-8'`};
+  ${tw `flex flex-wrap sm:justify-start mt-8'`};
 `;
 
 const Button = styled(OutboundLink)`
-  ${tw `cursor-pointer mx-2 my-1 py-1 px-2 md:px-8 rounded-lg no-underline focus:outline-none focus:shadow-outline`};
+  ${tw `cursor-pointer my-1 py-1 px-2 md:px-8 rounded-lg no-underline focus:outline-none focus:shadow-outline`};
   transition: all 0.3s ease-in-out;
   &:hover {
     ${tw `shadow-md`};
@@ -192,7 +192,7 @@ const Button = styled(OutboundLink)`
 `;
 
 const Email = styled(Button)`
-  ${tw `mx-4 my-4 sm:my-0`};
+  ${tw `my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
   align-items:center;
@@ -201,7 +201,7 @@ const Email = styled(Button)`
 `;
 
 const GitHub = styled(Button)`
-  ${tw `sm:mx-4 my-4 sm:my-0`};
+  ${tw `my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
   align-items:center;
@@ -209,7 +209,7 @@ const GitHub = styled(Button)`
 `;
 
 const LinkedIn = styled(Button)`
-  ${tw `sm:mx-4 my-4 sm:my-0`};
+  ${tw `my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
   align-items:center;
@@ -230,38 +230,26 @@ const Item = styled('div')`
   height: 300px;
 `;
 
-const ItemContent = styled('div')`
-  ${tw `py-8 px-6 inline-block flex-wrap content-between relative`};
-  z-index: 10;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  opacity: 0;
-  &:hover {
-    opacity: 1;
-  }
-`;
+// const ItemContent = styled('div')`
+//   ${tw `py-8 px-6 inline-block flex-wrap content-between relative`};
+//   z-index: 10;
+//   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+//   opacity: 0;
+//   &:hover {
+//     opacity: 1;
+//   }
+// `;
 
-const Top = styled('div')`
-  ${tw `z-30 flex flex-col`};
-`;
+// const Top = styled('div')`
+//   ${tw `z-30 flex flex-col`};
+// `;
 
-const Bottom = styled('div')`
-  ${tw `z-30`};
-`;
+// const Bottom = styled('div')`
+//   ${tw `z-30`};
+// `;
 
 const Repo = styled(OutboundLink)`
-  ${tw `text-black text-sm mb-4 py-1 no-underline opacity-75`};
-  transition: all 0.4s ease-in-out;
-  img {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    position: relative;
-    top: 2px;
-    transition: transform 0.3s ease-in-out;
-  }
-  &:hover {
-    ${tw `opacity-100`};
-  }
+  ${tw `text-black text-sm mb-4 py-1 no-underline `};
 `;
 
 const BGImage = styled('div')`
@@ -279,12 +267,10 @@ const BGImage = styled('div')`
   }
 `;
 
-const ItemTitle = styled('h2')`
-  ${tw `text-3xl mb-4`};
-  margin-top: 150px;
-`;
-
-
+// const ItemTitle = styled('h2')`
+//   ${tw `text-3xl mb-4`};
+//   margin-top: 150px;
+// `;
 
 class Index extends Component {
   render() {
@@ -328,8 +314,7 @@ class Index extends Component {
           </Header>
           <Intro>
             <Title>
-              Hey,<br />
-              <span className="nameTitle">I'm Bhavesh <span className="emoji" role="img" aria-label="hand-emoji">👋</span></span>
+              Hey,<span className="nameTitle"> I'm Bhavesh <span className="emoji" role="img" aria-label="hand-emoji">👋</span></span>
             </Title>
             <Social>
               <Email role="button" href="mailto:bhaveshch20@gmail.com">
@@ -347,23 +332,14 @@ class Index extends Component {
             <Title>Portfolio <span className="emoji2" role="img" aria-label="case-emoji">💼</span></Title>
             <Swiper {...params}>
               {edges.map(site => {
-                const { id, title, cover, url } = site.node;
+                const { id, cover, url } = site.node;
                 return (
                   <Item key={id}>
+                  <Repo href={url}>
                     <BGImage>
-                      {/* <Gradient /> */}
                       <Img fluid={cover.childImageSharp.fluid} />
                     </BGImage>
-                    <ItemContent>
-                      <Top>
-                        <Repo href={url}>
-                          <img src={github} alt="Arrow" aria-hidden="true" /> GitHub
-                  </Repo>
-                      </Top>
-                      <Bottom>
-                        <ItemTitle>{title}</ItemTitle>
-                      </Bottom>
-                    </ItemContent>
+                    </Repo>
                   </Item>
                 );
               })}
