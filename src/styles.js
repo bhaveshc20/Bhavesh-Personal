@@ -45,7 +45,6 @@ injectGlobal`
     transform: scale(1.4);
     width: 44px;
     transition: transform 0.2s ease-in-out;
-    background-size: 35px 35px;
   }
   .swiper-button-prev.swiper-button-disabled,
   .swiper-button-next.swiper-button-disabled {
