@@ -1,6 +1,7 @@
 const path = require(`path`)
 
 module.exports = {
+	pathPrefix: `/`,
 	plugins: [
 		'gatsby-plugin-emotion',
 		'gatsby-transformer-yaml',

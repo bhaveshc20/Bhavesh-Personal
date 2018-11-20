@@ -15,18 +15,23 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import '../swiper.css';
 
+import BhaveshResume from '../Resume_Bhavesh_Chowdhury.pdf'
+
+import GilroyOTF from '../fonts/Gilroy-ExtraBold.otf';
+import GilroyLightOTF from '../fonts/Gilroy-Light.otf';
+
 import github from '../github-logo.svg';
 import email from '../envelope.svg';
 import linkedin from '../linkedin-logo.svg';
 
 injectGlobal`
   @font-face {
-    font-family: Gilroy;
-    src: url('../fonts/Gilroy-ExtraBold.otf') format("opentype");
+    font-family: Gilroy-ExtraBold;
+    src: local('Gilroy-ExtraBold'), url('${GilroyOTF}') format("opentype");
   }
   @font-face {
     font-family: Gilroy-Light;
-    src: url('../fonts/Gilroy-Light.otf') format("opentype");
+    src: local('Gilroy-Light'), url('${GilroyLightOTF}') format("opentype");
   }
   *::before,
   *::after {
@@ -37,13 +42,13 @@ injectGlobal`
     background-color: #434343;
   }
   html {
-    font-family: Gilroy-Light;
     background: #FFF;
     border: 0;
     margin: 0;
     font-size: 18px;
   }
   body {
+    font-family: Gilroy-Light;
     border: 0;
     margin: 0;
     padding: 0;
@@ -147,7 +152,7 @@ const Intro = styled(Content)`
 `;
 
 const Title = styled('h1')`
-  font-family: Gilroy;
+  font-family: Gilroy-ExtraBold;
   line-height: 1.2;
   // letter-spacing: -3px;
   ${('font-size: 5vw; color: #8D7AE7')};
@@ -193,6 +198,16 @@ const Button = styled(OutboundLink)`
 const Email = styled(Button)`
   ${tw `my-4 sm:my-0`};
   color: #2C274D;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 300;
+`;
+
+const Resume = styled(Button)`
+  ${tw`my-4 sm:my-0`};
+  color: #2C274D;
+  border: #8D7AE7 2px solid;
   display: flex;
   align-items:center;
   justify-content:center;
@@ -302,12 +317,7 @@ class Index extends Component {
                 <Link to="/">
                   Home
                 </Link>
-                <Link to="/">
-                  About
-                </Link>
-                <Link to="/">
-                  Portfolio
-                </Link>
+                <Resume href={BhaveshResume} target="_blank">View Resume</Resume>
               </Links>
             </Navbar>
           </Header>
