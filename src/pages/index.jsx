@@ -154,8 +154,7 @@ const Intro = styled(Content)`
 const Title = styled('h1')`
   font-family: Gilroy-ExtraBold;
   line-height: 1.2;
-  // letter-spacing: -3px;
-  ${('font-size: 5vw; color: #8D7AE7')};
+  ${('font-size: 6vw; color: #8D7AE7')};
   .nameTitle {
     color: #2C274D;
   };
@@ -177,9 +176,9 @@ const Title = styled('h1')`
   100% { transform: rotate(0deg);}
 }
 
-  @media (max-width: 576px) {
-    ${('font-size: 50px')};
-  }
+  // @media (max-width: 576px) {
+  //   ${('font-size: 50px')};
+  // }
 `;
 
 const Social = styled('section')`
