@@ -11,9 +11,9 @@ import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion'
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import PenguinIco from '../../public/penguin_fav.ico';
+import PenguinIco from '../penguin_fav.ico';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import designVector from '../../public/static/design-vector.png'
+import designVector from '../design-vector.png'
 import { Helmet } from "react-helmet"
 
 import '../swiper.css';
