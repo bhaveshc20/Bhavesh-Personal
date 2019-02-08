@@ -11,7 +11,10 @@ import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion'
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
+import PenguinIco from '../../public/penguin_fav.ico';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import designVector from '../../public/static/design-vector.png'
+import { Helmet } from "react-helmet"
 
 import '../swiper.css';
 
@@ -107,7 +110,7 @@ injectGlobal`
 `;
 
 const Page = styled('div')`
-	${tw `text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
+	${tw`text-white p-0 m-0 bg-indigo-darker antialiased leading-normal relative`};
   background: #FFF;
   color: #2C274D;
   border: 14px solid #8D7AE7;
@@ -144,17 +147,44 @@ const Links = styled.div`
 `
 
 const Content = styled('section')`
-  ${tw `sm:px-8 px-4 md:px-24`};
+  ${tw`sm:px-8 px-4 md:px-24`};
 `;
 
 const Intro = styled(Content)`
-  ${tw `py-8 md:py-16`};
+  ${tw`flex flex-wrap py-8 md:py-16`};
+`;
+
+const SocialTitle = styled('div')`
+  ${tw`flex-1 sm:flex-col`};
+`;
+
+
+const Social = styled('section')`
+  ${tw`flex flex-row sm:justify-start mt-8'`};
+`;
+
+
+const VectorDesign = styled('div')`
+  ${tw`flex-1 sm:flex-col`};
+`;
+
+const VectorImage = styled('img')`
+  height: 25vw;
+  float:right;
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    height: 45vw;
+    float:left;
+  }
+
 `;
 
 const Title = styled('h1')`
   font-family: Gilroy-ExtraBold;
   line-height: 1.2;
-  ${('font-size: 6vw; color: #8D7AE7')};
+  ${('font-size: 5vw; color: #8D7AE7')};
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 8.5vw;
+  }
   .nameTitle {
     color: #2C274D;
   };
@@ -175,27 +205,21 @@ const Title = styled('h1')`
   75% { transform: rotate(10deg); }
   100% { transform: rotate(0deg);}
 }
-
-  // @media (max-width: 576px) {
-  //   ${('font-size: 50px')};
-  // }
 `;
 
-const Social = styled('section')`
-  ${tw `flex flex-wrap sm:justify-start mt-8'`};
-`;
+
 
 const Button = styled(OutboundLink)`
-  ${tw `cursor-pointer my-1 py-1 px-2 md:px-8 rounded-lg no-underline focus:outline-none focus:shadow-outline`};
+  ${tw`cursor-pointer my-1 py-1 px-2 md:px-8 rounded-lg no-underline focus:outline-none focus:shadow-outline`};
   transition: all 0.3s ease-in-out;
   &:hover {
-    ${tw `shadow-md`};
+    ${tw`shadow-md`};
     transform: translateY(-10px);
   }
 `;
 
 const Email = styled(Button)`
-  ${tw `my-4 sm:my-0`};
+  ${tw`my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
   align-items:center;
@@ -214,7 +238,7 @@ const Resume = styled(Button)`
 `;
 
 const GitHub = styled(Button)`
-  ${tw `my-4 sm:my-0`};
+  ${tw`my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
   align-items:center;
@@ -222,7 +246,7 @@ const GitHub = styled(Button)`
 `;
 
 const LinkedIn = styled(Button)`
-  ${tw `my-4 sm:my-0`};
+  ${tw`my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
   align-items:center;
@@ -230,14 +254,14 @@ const LinkedIn = styled(Button)`
 `;
 
 const SliderWrapper = styled('section')`
-  ${tw `sm:px-8 px-4 md:px-24`};
+  ${tw`sm:px-8 px-4 md:px-24`};
 `;
 
 const Item = styled('div')`
-  ${tw `w-64 bg-black rounded-lg flex`};
+  ${tw`w-64 bg-black rounded-lg flex`};
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
-    ${tw `shadow-md`};
+    ${tw`shadow-md`};
     transform: translateY(-15px);
   }
   height: 300px;
@@ -262,11 +286,11 @@ const Item = styled('div')`
 // `;
 
 const Repo = styled(OutboundLink)`
-  ${tw `text-black text-sm mb-4 py-1 no-underline `};
+  ${tw`text-black text-sm mb-4 py-1 no-underline `};
 `;
 
 const BGImage = styled('div')`
-  ${tw `absolute pin rounded-lg`};
+  ${tw`absolute pin rounded-lg`};
   z-index:0;
   .gatsby-image-outer-wrapper {
     position: static !important;
@@ -275,7 +299,7 @@ const BGImage = styled('div')`
     position: static !important;
   }
   img {
-    ${tw `rounded-lg`};
+    ${tw`rounded-lg`};
     opacity: 1 !important;
   }
 `;
@@ -309,6 +333,11 @@ class Index extends Component {
 
     return (
       <React.Fragment>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Bhavesh</title>
+          <link rel="icon" type="image/png" href={PenguinIco} sizes="16x16" />
+        </Helmet>
         <Page>
           <Header>
             <Navbar>
@@ -321,32 +350,37 @@ class Index extends Component {
             </Navbar>
           </Header>
           <Intro>
-            <Title>
-              Hey,<span className="nameTitle"> I'm Bhavesh <span className="emoji" role="img" aria-label="hand-emoji">👋</span></span>
-            </Title>
-            <Social>
-              <Email role="button" href="mailto:bhaveshch20@gmail.com">
-                <img src={email} alt="email" style={{ height: '20px', marginRight: '10px' }} />E-Mail
+            <SocialTitle>
+              <Title>
+                Hey,<span className="nameTitle"> I'm Bhavesh</span>
+              </Title>
+              <Social>
+                <Email role="button" href="mailto:bhaveshch20@gmail.com">
+                  <img src={email} alt="email" style={{ height: '20px', marginRight: '10px' }} />E-Mail
               </Email>
-              <GitHub role="button" href="https://github.com/bhaveshc789">
-                <img src={github} alt="github" style={{ height: '20px', marginRight: '10px' }} />GitHub
+                <GitHub role="button" href="https://github.com/bhaveshc789">
+                  <img src={github} alt="github" style={{ height: '20px', marginRight: '10px' }} />GitHub
         </GitHub>
-              <LinkedIn role="button" href="https://linkedin.com/in/bhavesh-chowdhury">
-                <img src={linkedin} alt="linkedin" style={{ height: '20px', marginRight: '10px' }} />LinkedIn
+                <LinkedIn role="button" href="https://linkedin.com/in/bhavesh-chowdhury">
+                  <img src={linkedin} alt="linkedin" style={{ height: '20px', marginRight: '10px' }} />LinkedIn
         </LinkedIn>
-            </Social>
+              </Social>
+            </SocialTitle>
+            <VectorDesign>
+              <VectorImage src={designVector} alt="vector" />
+            </VectorDesign>
           </Intro>
           <SliderWrapper>
-            <Title>Portfolio <span className="emoji2" role="img" aria-label="case-emoji">💼</span></Title>
+            <Title>Portfolio</Title>
             <Swiper {...params}>
               {edges.map(site => {
                 const { id, cover, url } = site.node;
                 return (
                   <Item key={id}>
-                  <Repo href={url}>
-                    <BGImage>
-                      <Img fluid={cover.childImageSharp.fluid} />
-                    </BGImage>
+                    <Repo href={url}>
+                      <BGImage>
+                        <Img fluid={cover.childImageSharp.fluid} />
+                      </BGImage>
                     </Repo>
                   </Item>
                 );
