@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import styled, { injectGlobal } from 'react-emotion'
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import PenguinIco from '../penguin_fav.ico';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
@@ -24,7 +24,7 @@ import GilroyOTF from '../fonts/Gilroy-ExtraBold.otf';
 import GilroyLightOTF from '../fonts/Gilroy-Light.otf';
 
 import github from '../github-logo.svg';
-import email from '../envelope.svg';
+import dribbble from '../dribbble.svg';
 import linkedin from '../linkedin-logo.svg';
 
 injectGlobal`
@@ -218,7 +218,7 @@ const Button = styled(OutboundLink)`
   }
 `;
 
-const Email = styled(Button)`
+const Dribbble = styled(Button)`
   ${tw`my-4 sm:my-0`};
   color: #2C274D;
   display: flex;
@@ -342,9 +342,6 @@ class Index extends Component {
           <Header>
             <Navbar>
               <Links>
-                <Link to="/">
-                  Home
-                </Link>
                 <Resume href={BhaveshResume} target="_blank">View Resume</Resume>
               </Links>
             </Navbar>
@@ -355,10 +352,10 @@ class Index extends Component {
                 Hey,<span className="nameTitle"> I'm Bhavesh</span>
               </Title>
               <Social>
-                <Email role="button" href="mailto:bhaveshch20@gmail.com">
-                  <img src={email} alt="email" style={{ height: '20px', marginRight: '10px' }} />E-Mail
-              </Email>
-                <GitHub role="button" href="https://github.com/bhaveshc789">
+                <Dribbble role="button" href="https://dribbble.com/bhaveshc20">
+                  <img src={dribbble} alt="dribbble" style={{ height: '20px', marginRight: '10px' }} />Dribbble
+              </Dribbble>
+                <GitHub role="button" href="https://github.com/bhaveshc20">
                   <img src={github} alt="github" style={{ height: '20px', marginRight: '10px' }} />GitHub
         </GitHub>
                 <LinkedIn role="button" href="https://linkedin.com/in/bhavesh-chowdhury">
