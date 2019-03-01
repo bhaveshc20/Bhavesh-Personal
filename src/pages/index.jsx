@@ -18,7 +18,7 @@ import { Helmet } from "react-helmet"
 
 import '../swiper.css';
 
-import BhaveshResume from '../Resume_Bhavesh_Chowdhury.pdf'
+import BhaveshResume from '../Resume_Bhavesh.pdf'
 
 import GilroyOTF from '../fonts/Gilroy-ExtraBold.otf';
 import GilroyLightOTF from '../fonts/Gilroy-Light.otf';
